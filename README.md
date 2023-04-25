@@ -1,46 +1,79 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+node
+v12.22.8
+npm
+6.14.15
 
-## Available Scripts
+```
+// 系统色板 = 基础色板 + 中性色板
+// 产品色板 = 品牌色 + 功能色板
+```
 
-In the project directory, you can run:
+## 组件库的样式变量分类
+```
+- 基础色彩系统
+- 字体系统
+- 表单
+- 按钮
+- 边框和阴影
+- 可配置开关
 
-### `npm start`
+add => normalize.css -- (_reboot.scss)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+normalize 显示元素原本样式(推荐)
+resetcss 重置所有样式
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### sass
+### 安装scss依赖
+```shell
+$    yarn add node-sass --save-dev 
+```
 
-### `npm test`
+### 编译scss文件
+```shell
+$    npx node-sass src/styles/_variables.scss var.css
+$    cat var.css
+$    rm -rf var.css  
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 完成样式主文件开发
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image-20221201080554473](README/image-20221201080554473.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Button 组件
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+不同的Button Type
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+不同的Button Size
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Disabled状态
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### 规划使用方法
+```js
+<Button
+    size="lg"
+    type="primary"
+    disabled
+    href=""?
+    className=""?
+    autoFocus=""?
+    ...
+> 
+    Viking Button
+</Button>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```shell
+$ yarn add classnames --save
+$ yarn add @types/classnames --save
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://github.com/EricWong1994/vikingShipComp/blob/master/src/components/Button/button.tsx
+
+
+
