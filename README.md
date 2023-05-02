@@ -85,6 +85,8 @@ https://github.com/EricWong1994/vikingShipComp/blob/master/src/components/Button
 + 属性分析
 + 调用方法
 
+![Snipaste_2023-05-02_13-52-02.png](./README/Snipaste_2023-05-02_13-52-02.png)
+https://blog.csdn.net/CaraYQ/article/details/122741041
 ---
 ### 1. 编码过程 Menu.tsx
 
@@ -204,4 +206,19 @@ return (
             cool link3
         </MenuItem>
     </Menu>
+```
+### 4. 展示下拉菜单SubMenu
+![Snipaste_2023-05-02_18-19-02.png](./README/Snipaste_2023-05-02_18-19-02.png)
+
+
+![Snipaste_2023-05-02_19-42.png](./README/Snipaste_2023-05-02_19-42.png)
+```tsx
+<SubMenu title='dropdown'>
+		<MenuItem>
+			dropdown 1
+		</MenuItem>
+		<MenuItem>
+			dropdown 2
+		</MenuItem>
+	</SubMenu>
 ```

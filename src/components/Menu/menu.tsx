@@ -1,7 +1,6 @@
-import React from "react";
+import React , { useState }from "react";
 import classNames from "classnames";
-import { useState } from "react";
-import { MenuItemProps } from "./MenuItem";
+import { MenuItemProps } from "./menuItem";
 
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: number) => void;
@@ -19,6 +18,7 @@ export interface MenuProps {
 interface IMenuContext {
     index: number;
     onSelect?: SelectCallback; // 触发选中后，组件中的回调
+    mode?:MenuMode
 }
 
 // 使用Context传递数据
@@ -35,9 +35,10 @@ const Menu: React.FC<MenuProps> = (props) => {
 
     const [currentActive, setActive] = useState(defaultIndex)
 
-    const classes = classNames('viking-menu', className, {
-        'menu-vertical': mode === 'vertical'
-    })
+	const classes = classNames('viking-menu', className, {
+		'menu-vertical': mode === 'vertical',
+		'menu-horizontal': mode !== 'vertical',
+	})
 
     const handleClick = (index:number)=>{
         setActive(index)
@@ -51,7 +52,8 @@ const Menu: React.FC<MenuProps> = (props) => {
     // 传递给子组件的context(注入到子组件)
     const passedContext: IMenuContext = {
         index: currentActive ? currentActive : 0,// 默认值处理为0
-        onSelect: handleClick
+        onSelect: handleClick,
+        mode: mode
     }
 
     const renderChildren = ()=>{
@@ -59,7 +61,7 @@ const Menu: React.FC<MenuProps> = (props) => {
             // 获取子组件实例 displayName
             const childElement = child as React.FunctionComponentElement<MenuItemProps>
             const { displayName } = childElement.type
-            if (displayName === "MenuItem") {
+            if (displayName === "MenuItem"|| displayName === 'SubMenu') {
                 // return child
                 return React.cloneElement(childElement, {// 自动添加 index属性
                     index
