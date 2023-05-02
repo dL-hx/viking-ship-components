@@ -165,5 +165,43 @@ return (
 
 优化组件实现:
 ```tsx
+    const renderChildren = ()=>{
+        return React.Children.map(children, (child, index)=>{
+            // 获取子组件实例 displayName
+            const childElement = child as React.FunctionComponentElement<MenuItemProps>
+            const { displayName } = childElement.type
+            if (displayName === "MenuItem") {
+                // return child
+                return React.cloneElement(childElement, {// 自动添加 index属性
+                    index
+                })
+            }else{
+                console.error("Warning: Menu has a child which is not a MenuItem component.");
+            }
+        })
+    }
 
+    return (
+        <ul className={classes} style={style} data-testid="test-menu">
+            <MenuContext.Provider value={passedContext}>
+                {renderChildren()}
+            </MenuContext.Provider>
+        </ul>
+    )
+```
+
+
+`组件可以这样调用`
+```tsx
+    <Menu defaultIndex={0} onSelect={index=>console.log(index)}>
+        <MenuItem>
+            cool link
+        </MenuItem>
+        <MenuItem disabled>
+            cool link2
+        </MenuItem>
+        <MenuItem>
+            cool link3
+        </MenuItem>
+    </Menu>
 ```

@@ -3,13 +3,13 @@ import Menu from './../components/Menu/menu';
 function MenuDemo() {
   return (
     <Menu defaultIndex={0} onSelect={index=>console.log(index)}>
-        <MenuItem index={0}>
+        <MenuItem>
             cool link
         </MenuItem>
-        <MenuItem index={1} disabled>
+        <MenuItem disabled>
             cool link2
         </MenuItem>
-        <MenuItem index={2}>
+        <MenuItem>
             cool link3
         </MenuItem>
     </Menu>
