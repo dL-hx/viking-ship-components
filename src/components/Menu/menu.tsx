@@ -3,26 +3,28 @@ import classNames from "classnames";
 import { MenuItemProps } from "./menuItem";
 
 type MenuMode = 'horizontal' | 'vertical'
-type SelectCallback = (selectedIndex: number) => void;
+type SelectCallback = (selectedIndex: string) => void;
 
 export interface MenuProps {
-    defaultIndex?: number;
+    defaultIndex?: string;
     className?: string;
     mode?: MenuMode;
     style?: React.CSSProperties;
     // onSelect?:(selectedIndex: number)=>void;
     onSelect?: SelectCallback;
     children?: React.ReactNode;
+    defaultOpenSubMenus?: string[];
 }
 
 interface IMenuContext {
-    index: number;
+    index: string;
     onSelect?: SelectCallback; // 触发选中后，组件中的回调
-    mode?:MenuMode
+    mode?:MenuMode,
+    defaultOpenSubMenus?: string[];
 }
 
 // 使用Context传递数据
-export const MenuContext = React.createContext<IMenuContext>({ index: 0 })
+export const MenuContext = React.createContext<IMenuContext>({ index: '0' })
 const Menu: React.FC<MenuProps> = (props) => {
     const {
         defaultIndex,
@@ -31,6 +33,7 @@ const Menu: React.FC<MenuProps> = (props) => {
         style,
         onSelect,
         children,
+        defaultOpenSubMenus
     } = props
 
     const [currentActive, setActive] = useState(defaultIndex)
@@ -40,7 +43,7 @@ const Menu: React.FC<MenuProps> = (props) => {
 		'menu-horizontal': mode !== 'vertical',
 	})
 
-    const handleClick = (index:number)=>{
+    const handleClick = (index:string)=>{
         setActive(index)
 
         // 看到onSelect 可能存在也可能不存在，需要判断一下， onSelect?: SelectCallback;
@@ -51,9 +54,10 @@ const Menu: React.FC<MenuProps> = (props) => {
 
     // 传递给子组件的context(注入到子组件)
     const passedContext: IMenuContext = {
-        index: currentActive ? currentActive : 0,// 默认值处理为0
+        index: currentActive ? currentActive : '0',// 默认值处理为0
         onSelect: handleClick,
-        mode: mode
+        mode: mode,
+        defaultOpenSubMenus
     }
 
     const renderChildren = ()=>{
@@ -64,7 +68,7 @@ const Menu: React.FC<MenuProps> = (props) => {
             if (displayName === "MenuItem"|| displayName === 'SubMenu') {
                 // return child
                 return React.cloneElement(childElement, {// 自动添加 index属性
-                    index
+                    index:index.toString()
                 })
             }else{
                 console.error("Warning: Menu has a child which is not a MenuItem component.");
@@ -82,8 +86,9 @@ const Menu: React.FC<MenuProps> = (props) => {
 }
 
 Menu.defaultProps = {
-    defaultIndex: 0,
+    defaultIndex: '0',
     mode: 'horizontal',
+    defaultOpenSubMenus:  [],
 }
 
 export default Menu

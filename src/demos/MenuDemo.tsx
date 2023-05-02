@@ -3,7 +3,7 @@ import SubMenu from '../components/Menu/subMenu';
 import Menu from './../components/Menu/menu';
 function MenuDemo() {
   return (
-    <Menu defaultIndex={0} onSelect={index=>console.log(index)} mode='horizontal'>
+    <Menu defaultIndex={'0'} onSelect={index=>console.log(index)} mode='vertical' defaultOpenSubMenus={['2']}>
         <MenuItem>
             cool link
         </MenuItem>

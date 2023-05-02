@@ -222,3 +222,36 @@ return (
 		</MenuItem>
 	</SubMenu>
 ```
+
+
+### 5. SubMenu 添加点击事件，与点击事件的状态,纵向模式默认展开
+
+
+openedSubMenus
+``` js
+    const openedSubMenus = context.defaultOpenSubMenus as Array<string>
+
+    const isOpened = (index && context.mode === 'vertical')?openedSubMenus.includes(index):false
+```
+
+```tsx
+    <Menu defaultIndex={'0'} onSelect={index=>console.log(index)} mode='vertical' defaultOpenSubMenus={['2']}>
+        <MenuItem>
+            cool link
+        </MenuItem>
+        <MenuItem disabled>
+            cool link2
+        </MenuItem>
+      <SubMenu title='dropdown'>
+        <MenuItem>
+          dropdown 1
+        </MenuItem>
+        <MenuItem>
+          dropdown 2
+        </MenuItem>
+      </SubMenu>
+      <MenuItem>
+            cool link3
+        </MenuItem>
+    </Menu>
+```
