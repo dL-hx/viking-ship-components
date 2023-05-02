@@ -79,3 +79,91 @@ https://github.com/EricWong1994/vikingShipComp/blob/master/src/components/Button
 
 ### Button组件测试
 
+
+## Menu 组件
++ 需求分析
++ 属性分析
++ 调用方法
+
+---
+### 1. 编码过程 Menu.tsx
+
+父子属性传值， 决定是那个index被展示，
+### 2. Context 来透传属性
+
+通过Context 来透传属性
+`父组件`
+```tsx
+export const MenuContext = React.createContext<IMenuContext>({ index: 0 })
+
+
+const handleClick = (index:number)=>{
+    setActive(index)
+    // 看到onSelect 可能存在也可能不存在，需要判断一下， onSelect?: SelectCallback;
+    if (onSelect) {// 触发选中后，组件中的回调
+        onSelect(index)
+    }
+}
+
+    // 传递给子组件的context(注入到子组件)
+const passedContext: IMenuContext = {
+        index: currentActive ? currentActive : 0,// 默认值处理为0
+        onSelect: handleClick
+}
+
+<MenuContext.Provider value={passedContext}>
+     {children}
+ </MenuContext.Provider>
+```
+
+
+`子组件`
+```tsx
+const context = useContext(MenuContext)
+
+const classes = classNames('MenuItem', className, {
+    'is-disabled': disabled,
+    'is-active': context.index === index
+})
+// 处理高亮
+const handleClick = () => {
+    if (context.onSelect && !disabled) {
+        context.onSelect(index) // 必须要求组件传递index属性
+    }
+}
+return (
+    <li className={classes} style={style} onClick={handleClick}>
+        {children}
+    </li>
+)
+
+```
+
+### 3. 样式美化
+
+
+
+
+
+---
+优化组件实现，
+1. 不需要手动添加index值
+2. 添加除`MenuItem`组件时候，提示warning
+```tsx
+    <Menu defaultIndex={0} onSelect={index=>console.log(index)}>
+        <MenuItem index={0}>
+            cool link
+        </MenuItem>
+        <MenuItem index={1} disabled>
+            cool link2
+        </MenuItem>
+        <MenuItem index={2}>
+            cool link3
+        </MenuItem>
+    </Menu>
+```
+
+优化组件实现:
+```tsx
+
+```
