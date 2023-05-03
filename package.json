@@ -15,6 +15,7 @@
     "clean": "rimraf ./build",
     "lint": "eslint --ext js,ts,tsx src --max-warnings 10",
     "build": "npm run clean && npm run build-ts && npm run build-css",
+    "component": "yarn plop component",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
@@ -66,6 +67,6 @@
     "react-scripts": "3.2.0",
     "rimraf": "^3.0.1",
     "typescript": "3.7.2",
-    "plop": "^3.1.2"
+    "plop": "^2.7.4"
   }
 }

@@ -5,9 +5,9 @@ import classNames from "classnames";
 export interface {{ name }}Props {
     className?: string;
     style?: React.CSSProperties;
-    children?: React.ReactNode;
 }
-const {{ name }}: React.FC <{{ name }}Props> = (props) => {
+
+export const {{ name }}: React.FC <{{ name }}Props> = (props) => {
     const {
         className,
         style,
@@ -27,4 +27,4 @@ const {{ name }}: React.FC <{{ name }}Props> = (props) => {
 
 }
 
-export default {{ name }}
+export default {{ name }};
