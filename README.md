@@ -273,3 +273,8 @@ yarn storybook
 + 分开展示各个组件不同属性下的状态
 + 能追踪组件的行为并具有属性调试
 + 可以自动生成组件文档 + 属性列表 
+
+勘误文档
+https://shimo.im/docs/tgP9yYy9jp8HtghT/read
+
+https://github.com/huay19/vikingship/blob/master/package.json
