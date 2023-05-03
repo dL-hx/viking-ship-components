@@ -1,4 +1,4 @@
-import React,{ useContext, useState, FunctionComponentElement } from 'react'
+import React,{ useContext, useState,FC, FunctionComponentElement } from 'react'
 import classNames from 'classnames'
 import { MenuContext } from './menu'
 import { MenuItemProps } from './menuItem'
@@ -10,7 +10,7 @@ export interface SubMenuProps {
     children?: React.ReactNode;
 }
 
-const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className}) => {
+export const SubMenu: FC<SubMenuProps> = ({ index, title, children, className}) => {
 	const context = useContext(MenuContext)
     // 类型断言 as Array<string>,断言后没有undefined类型了
     const openedSubMenus = context.defaultOpenSubMenus as Array<string>
@@ -77,4 +77,4 @@ SubMenu.defaultProps = {
 
 SubMenu.displayName = 'SubMenu'
 
-export default SubMenu
+export default SubMenu;
