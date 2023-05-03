@@ -15,8 +15,10 @@ const defaultProps = {
 }
 
 const testProps:ButtonProps={
-    btnType:ButtonType.Primary,
-    size:ButtonSize.Large,
+    // btnType:ButtonType.Primary,
+    btnType:'primary',
+    // size:ButtonSize.Large,
+    size:'lg',
     className:'klass'
 }
 
@@ -46,7 +48,7 @@ describe('测试Button组件',()=>{
 
 
     it('渲染A link Button', ()=>{// 测试元素内容， 元素标签为a, 元素样式
-        const wrapper = render(<Button btnType={ButtonType.Link} href='http://www.baidu.com'>Link</Button>)
+        const wrapper = render(<Button btnType={'link'} href='http://www.baidu.com'>Link</Button>)
         const element = wrapper.queryByText('Link') as HTMLButtonElement
         expect(element).toBeInTheDocument()
         expect(element?.tagName).toEqual('A')
