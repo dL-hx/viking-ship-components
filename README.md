@@ -255,3 +255,21 @@ openedSubMenus
         </MenuItem>
     </Menu>
 ```
+
+
+## Tab 组件
+
+## storyBook使用
+https://storybook.js.org/
+
+npx -p @storybook/cli@5.2.8 sb init
+yarn storybook
+
+
+调试组件
+
+手动配置:
+新工具的特点:
++ 分开展示各个组件不同属性下的状态
++ 能追踪组件的行为并具有属性调试
++ 可以自动生成组件文档 + 属性列表 

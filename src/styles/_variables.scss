@@ -87,7 +87,7 @@ $body-text-align:           null !default;
 // Spacing
 $spacer: 1rem !default;
 
-$headings-margin-bottom:      $spacer / 2 !default;
+$headings-margin-bottom:      0.5rem !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
 $headings-font-weight:        500 !default;
@@ -230,6 +230,26 @@ $menu-item-disabled-color:     $gray-600 !default;
 //sub-menu
 //submenu
 $submenu-box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+
+// tabs
+$tabs-nav-box-shadow: 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075) !default;
+$tabs-nav-box-shadow-buttom: 0 -1px 0 rgba($white, 0.15),
+  0 -1px 1px rgba($black, 0.075) !default;
+$tabs-nav-box-shadow-left: 1px 0 0 rgba($white, 0.15),
+  1px 0 0px rgba($black, 0.075) !default;
+$tabs-nav-box-shadow-right: -1px 0 0 rgba($white, 0.15),
+  -1px 0 0 rgba($black, 0.075) !default;
+$tab-active-color: $primary;
+$tab-active-border-color: $primary;
+$tab-active-border-width: 3px;
+
+$tab-nav-base-padding: 8px;
+$tab-nav-lg-padding: $tab-nav-base-padding * 1.25;
+$tab-nav-sm-padding: $tab-nav-base-padding * 0.75;
+
+$tab-nav-disabled-color: rgba($black, 0.25);
+
+
 
 //input
 $input-padding-y:                       $btn-padding-y !default;
