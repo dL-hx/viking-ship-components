@@ -44,14 +44,7 @@ const SimpleComplete = () => {
   const handleFetch2 = (query: string) => {
     return lakersWithNumber.filter(player => player.value.includes(query))
   }
-  // const handleFetch = (query: string) => {
-  //   return fetch(`https://api.github.com/search/users?q=${query}`)
-  //     .then(res => res.json())
-  //     .then(({ items }) => {
-  //       console.log(items)
-  //       return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item}))
-  //     })
-  // }
+
 
 
   // https://coding.imooc.com/learn/questiondetail/179929.html
@@ -66,20 +59,29 @@ const SimpleComplete = () => {
   }
 
 
-  // const renderOption2 = (item: DataSourceType<GithubUserProps>) => {
-  //   const itemWithGithub = item as DataSourceType<GithubUserProps>
-  //   return (
-  //     <>
-  //       <h2>Name: {itemWithGithub.value}</h2>
-  //       <p>url: {itemWithGithub.url}</p>
-  //     </>
-  //   )
-  // }
+  const handleFetch3 = (query: string) => {
+    return fetch(`https://api.github.com/search/users?q=${query}`)
+      .then(res => res.json())
+      .then(({ items }) => {
+        console.log(items)
+        return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item}))
+      })
+  }
+
+  const renderOption3 = (item: DataSourceType) => {
+    const itemWithGithub = item as DataSourceType<GithubUserProps>
+    return (
+      <>
+        <h2>Name: {itemWithGithub.value}</h2>
+        <p>url: {itemWithGithub.url}</p>
+      </>
+    )
+  }
   return (
     <AutoComplete 
-      fetchSuggestions={handleFetch1}
+      fetchSuggestions={handleFetch3}
       onSelect={action('selected')}
-      renderOption={renderOption1}
+      renderOption={renderOption3}
     />
   )
 }
