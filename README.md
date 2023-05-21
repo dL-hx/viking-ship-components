@@ -278,3 +278,27 @@ yarn storybook
 https://shimo.im/docs/tgP9yYy9jp8HtghT/read
 
 https://github.com/huay19/vikingship/blob/master/package.json
+
+https://github.com/marlonchiu/imooc-vikingship-ui/tree/main/vikingship-ui
+新
+https://github.com/zhangchen-dev/viking-ship-zjq/blob/main/package.json
+## Input 组件
+![Snipaste_2023-05-03_19-40-53.png](README%2FSnipaste_2023-05-03_19-40-53.png)
+
+
+
+
+![Snipaste_2023-05-21_16-29-13](README/Snipaste_2023-05-21_16-29-13.png)
+
+7   9   10    11 12 13
+
+// 处理复杂Object结构
+interface DataSourceObject {
+    value: string;
+}
+
+// 交叉类型
+export type DataSourceType<T = {}> = T & DataSourceObject
+
+
+7   9   10    11 12 13

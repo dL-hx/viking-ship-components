@@ -1,3 +1,4 @@
+import React from 'react'
 import MenuItem from '../components/Menu/menuItem';
 import SubMenu from '../components/Menu/subMenu';
 import Menu from './../components/Menu/menu';
