@@ -282,7 +282,7 @@ https://github.com/huay19/vikingship/blob/master/package.json
 https://github.com/marlonchiu/imooc-vikingship-ui/tree/main/vikingship-ui
 新
 https://github.com/zhangchen-dev/viking-ship-zjq/blob/main/package.json
-## Input 组件
+## Input 组件,AutoComplete
 ![Snipaste_2023-05-03_19-40-53.png](README%2FSnipaste_2023-05-03_19-40-53.png)
 
 
@@ -302,7 +302,7 @@ interface DataSourceObject {
 export type DataSourceType<T = {}> = T & DataSourceObject
 
 
-7   9   10    11 12 13
+7     10    11 12 13
 
 import React, { FC, useState, KeyboardEvent, ChangeEvent, ReactElement, useEffect } from 'react'
 
@@ -318,3 +318,8 @@ import React, { FC, useState, KeyboardEvent, ChangeEvent, ReactElement, useEffec
         
     }
 ```
+## Select 组件
+
+
+## Upload 组件
+上传组件
