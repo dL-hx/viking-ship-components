@@ -292,6 +292,7 @@ https://github.com/zhangchen-dev/viking-ship-zjq/blob/main/package.json
 
 7   9   10    11 12 13
 
+```tsx
 // 处理复杂Object结构
 interface DataSourceObject {
     value: string;
@@ -302,3 +303,18 @@ export type DataSourceType<T = {}> = T & DataSourceObject
 
 
 7   9   10    11 12 13
+
+import React, { FC, useState, KeyboardEvent, ChangeEvent, ReactElement, useEffect } from 'react'
+
+
+// 事件
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.trim();
+        setInputValue(value)
+        /* 放到useEffect  */
+    }
+
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+        
+    }
+```

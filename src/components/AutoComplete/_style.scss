@@ -25,11 +25,11 @@
     transition: $menu-transition;
     color: $body-color;
     &.is-active {
-      background: $menu-item-active-color !important;
-      color: $white !important;
-    }
-    &:hover {
+      // background: $menu-item-active-color !important;
       color: $menu-item-active-color !important;
+    }
+    :hover {
+      color: $link-hover-color !important;
     }
   }
 }
