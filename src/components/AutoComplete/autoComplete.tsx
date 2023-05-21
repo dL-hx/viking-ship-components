@@ -1,8 +1,9 @@
-import React, { FC, useState, ChangeEvent, ReactElement } from 'react'
+import React, { FC, useState, ChangeEvent, ReactElement, useEffect } from 'react'
 import Input, { InputProps } from '../Input/input'
 
 // loading处理
 import Icon from './../Icon/icon'
+import useDebounce from '../../hooks/useDebounce';
 // 处理复杂Object结构
 interface DataSourceObject {
     value: string;
@@ -24,11 +25,11 @@ export const AutoComplete: FC<AutoCompleteProps> = props => {
 
     const [loading, setLoading] = useState(false)
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value.trim();
-        setInputValue(value)
-        if (value) {
-            const results = fetchSuggestions(value);
+
+    const debouncedValue = useDebounce(inputValue, 500)// 500ms后更新 inputValue,起到防抖作用
+    useEffect(()=>{
+        if (debouncedValue) {// 用debouncedValue 替换 inputValue
+            const results = fetchSuggestions(debouncedValue as string);
             if (results instanceof Promise) {
                 console.log('triggered');
                 setLoading(true)
@@ -43,6 +44,14 @@ export const AutoComplete: FC<AutoCompleteProps> = props => {
         } else {
             setSuggestions([])
         }
+
+
+    },[debouncedValue])
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.trim();
+        setInputValue(value)
+        /* 放到useEffect  */
     }
 
     const handleSelect = (item: DataSourceType) => {
