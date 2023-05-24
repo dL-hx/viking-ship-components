@@ -1,26 +1,32 @@
-import React from 'react';
-import ButtonDemo from './demos/ButtonDemo';
-import MenuDemo from './demos/MenuDemo';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <h1>Hello world</h1>
-        <h2>Hello world</h2>
-        <h3>Hello world</h3>
-        <hr/>
-        <code>
-          const a = 'b'
-        </code> */}
-        
-        <MenuDemo />
+    const handleFileChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files
+        if (files){
+            const uploadedFile = files[0]
+            const formData = new FormData()
+            formData.append(uploadedFile.name, uploadedFile)
 
-        <ButtonDemo />
-       
-      </header>
-    </div>
-  );
+            // 上传到server端
+            axios.post('https://jsonplaceholder.typicode.com/posts', formData, {
+                headers:{
+                    'Content-Type':'multipart/form-data'
+                }
+            }).then(res=>{
+                // 拿到服务端返回
+                console.log(res)
+            })
+
+        }
+    };
+
+    return (
+        <div className="App" style={{marginTop: '100px', marginLeft: '100px'}}>
+           <input type='file' name="myFile" onChange={handleFileChange}/>
+        </div>
+    );
 }
 
 export default App;

@@ -7,8 +7,8 @@ npm
 ```
 // 系统色板 = 基础色板 + 中性色板
 // 产品色板 = 品牌色 + 功能色板
-```
 
+```
 ## 组件库的样式变量分类
 ```
 - 基础色彩系统
@@ -323,3 +323,101 @@ import React, { FC, useState, KeyboardEvent, ChangeEvent, ReactElement, useEffec
 
 ## Upload 组件
 上传组件
+
+### 分析原型
+![Snipaste_2023-05-24_23-59-02.png](README/Snipaste_2023-05-24_23-59-02.png)
+### 设计组件生命周期
+![Snipaste_2023-05-25_00-06-17.png](README/Snipaste_2023-05-25_00-06-17.png)
+### 设计组件使用方法
+![Snipaste_2023-05-25_00-08-02.png](README/Snipaste_2023-05-25_00-08-02.png)
+
+### Axios
+![Snipaste_2023-05-25_00-19-27.png](README%2FSnipaste_2023-05-25_00-19-27.png)
+> 原生XHR  and   $.ajax   与fetch
+
+![Snipaste_2023-05-24_23-59-02.png](README%2FSnipaste_2023-05-24_23-59-02.png)
+![Snipaste_2023-05-25_00-06-17.png](README%2FSnipaste_2023-05-25_00-06-17.png)
+![Snipaste_2023-05-25_00-08-02.png](README%2FSnipaste_2023-05-25_00-08-02.png)
+![Snipaste_2023-05-25_00-11-46.png](README%2FSnipaste_2023-05-25_00-11-46.png)
+![Snipaste_2023-05-25_00-12-51.png](README%2FSnipaste_2023-05-25_00-12-51.png)
+![Snipaste_2023-05-25_00-13-50.png](README%2FSnipaste_2023-05-25_00-13-50.png)
+
+
+
+#### 支持 REST API
+
+Mock Server
+#### jsonplaceholder
+jsonplaceholder.typicode.com
+![Snipaste_2023-05-25_00-26-38.png](README%2FSnipaste_2023-05-25_00-26-38.png)
+
+#### Mocky.io / Mock.js
+![Snipaste_2023-05-25_00-27-40.png](README%2FSnipaste_2023-05-25_00-27-40.png)
+
+
+普通的axios请求
+```tsx
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
+
+
+function App() {
+    const [title, setTitle] = useState('')
+    const postData = {
+        title: 'foo',
+        body: 'bar',
+    };
+
+    // 发送异步请求
+    useEffect(() => {
+        axios.post('https://jsonplaceholder.typicode.com/posts', postData)
+            .then(res => {
+                console.log(res);
+                setTitle(res.data.title)
+            })
+    }, [])
+    return (
+        <div className="App">
+           <h2> {title}</h2>
+        </div>
+    );
+}
+
+export default App;
+
+```
+
+
+#### 上传文件时候的axios 请求,与数据的玄机,应该怎样写
+> 使用异步请求完成文件上传
+
+
+```
+
+1. form 表单提交 form.submit   /  action
+
+post 请求发送到server端, 在server端在做对应的处理,  并且返回结果,
+
+client----server
+
+input type=file   发送的是二进制的文件
+form encType=multipart/form-data
+
+或者是
+form encType=application/x-www-form-urlencoded(default) 默认是这个低效
+     encType = multipart/form-data     form-data,  传递速度快, 二进制数据用这个是比较高效
+     encType = text/plain
+
+
+
+传统表单上传的原理,传递form data数据,--->演化到 javascript 上传文件的过程
+
+
+
+
+```
+![Snipaste_2023-05-25_01-11-29.png](README%2FSnipaste_2023-05-25_01-11-29.png)
+
+
+2. javascript 发送异步请求,
+![Snipaste_2023-05-25_01-14-13.png](README%2FSnipaste_2023-05-25_01-14-13.png)
