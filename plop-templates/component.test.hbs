@@ -1,10 +1,10 @@
 import React from 'react'
 import {render, fireEvent} from '@testing-library/react'
-import {{name}} from './{{name}}';
+import {{componentName}} from './{{name}}';
 
 
 test('第一个测试case',()=>{
-   const wrapper = render(<{{name}}>Nice</{{name}}>)
+   const wrapper = render(<{{componentName}}>Nice</{{componentName}}>)
    const element = wrapper.queryByText('Nice')
    expect(element).toBeTruthy()
    expect(element).toBeInTheDocument()

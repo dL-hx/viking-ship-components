@@ -2,18 +2,18 @@ import React from "react";
 import classNames from "classnames";
 
 
-export interface {{ name }}Props {
+export interface {{ componentName }}Props {
     className?: string;
     style?: React.CSSProperties;
 }
 
-export const {{ name }}: React.FC <{{ name }}Props> = (props) => {
+export const {{ componentName }}: React.FC <{{ componentName }}Props> = (props) => {
     const {
         className,
         style,
         children,
     } = props
-    const classes = classNames('{{ name }}', className, {
+    const classes = classNames('{{ componentName }}', className, {
 
     })
     return (
@@ -23,8 +23,8 @@ export const {{ name }}: React.FC <{{ name }}Props> = (props) => {
     )
 }
 
-{{ name }}.defaultProps = {
+{{ componentName }}.defaultProps = {
 
 }
 
-export default {{ name }};
+export default {{ componentName }};

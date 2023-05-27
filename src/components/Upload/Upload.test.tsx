@@ -1,6 +1,6 @@
 import React from 'react'
 import {render, fireEvent} from '@testing-library/react'
-import Upload from './Upload';
+import Upload from './upload';
 
 
 test('第一个测试case',()=>{

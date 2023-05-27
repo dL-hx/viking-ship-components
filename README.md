@@ -421,3 +421,4 @@ form encType=application/x-www-form-urlencoded(default) 默认是这个低效
 
 2. javascript 发送异步请求,
 ![Snipaste_2023-05-25_01-14-13.png](README%2FSnipaste_2023-05-25_01-14-13.png)
+![Snipaste_2023-05-27_16-59-19.png](README%2FSnipaste_2023-05-27_16-59-19.png)
