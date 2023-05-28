@@ -42,15 +42,6 @@ module.exports = plop => {
         },
         {
           type: 'add', // 代表添加文件
-          path: `src/components/${componentName}/{{name}}.test.tsx`,
-          templateFile: 'plop-templates/component.test.hbs',
-          data: {// 传入模板的参数
-            componentName,
-            name
-          },
-        },
-        {
-          type: 'add', // 代表添加文件
           path: `src/components/${componentName}/{{name}}.stories.tsx`,
           templateFile: 'plop-templates/component.stories.tsx.hbs',
           data: {// 传入模板的参数

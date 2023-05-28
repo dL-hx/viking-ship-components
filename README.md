@@ -1,8 +1,10 @@
 
 node
-v12.22.8
+v12.9.0
 npm
-6.14.15
+6.9.0
+![Snipaste_2023-05-28_23-11-51.png](README%2FSnipaste_2023-05-28_23-11-51.png.png)
+
 
 ```
 // 系统色板 = 基础色板 + 中性色板
@@ -453,3 +455,4 @@ form encType=application/x-www-form-urlencoded(default) 默认是这个低效
 
 Progress 组件
 ![Snipaste_2023-05-28_12-04-53.png](README%2FSnipaste_2023-05-28_12-04-53.png)
+![Snipaste_2023-05-28_23-11-51.png](README%2FSnipaste_2023-05-28_23-11-51.png.png)

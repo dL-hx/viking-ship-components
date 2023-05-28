@@ -1,7 +1,10 @@
 {
   "name": "viking-ship-components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
@@ -10,26 +13,42 @@
     "classnames": "^2.2.6",
     "react-transition-group": "^4.4.1"
   },
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "react-scripts start",
-    "clean": "rimraf ./build",
-    "lint": "eslint --ext js,ts,tsx src --max-warnings 10",
+    "clean": "rimraf ./dist",
+    "lint": "eslint --fix --ext js,ts,tsx src --max-warnings 100",
     "build": "npm run clean && npm run build-ts && npm run build-css",
-    "component": "yarn plop component",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./build/index.css",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
+    "prepublishOnly": "npm run lint && npm run build",
     "rimraf": "rimraf node_modules",
-    "installs": "npm i"
+    "installs": "npm i",
+    "component": "yarn plop component"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "browserslist": {
     "production": [
@@ -67,6 +86,6 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
     "rimraf": "^3.0.1",
-    "typescript": "3.7.2"
+    "typescript": "^4.2.4"
   }
 }

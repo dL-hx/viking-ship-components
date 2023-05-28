@@ -16,7 +16,7 @@ function App() {
                 console.log(res);
                 setTitle(res.data.title)
             })
-    }, [])
+    }, [postData])
     return (
         <div className="App">
            <h2> {title}</h2>
