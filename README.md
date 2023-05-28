@@ -456,3 +456,10 @@ form encType=application/x-www-form-urlencoded(default) 默认是这个低效
 Progress 组件
 ![Snipaste_2023-05-28_12-04-53.png](README%2FSnipaste_2023-05-28_12-04-53.png)
 ![Snipaste_2023-05-28_23-11-51.png](README%2FSnipaste_2023-05-28_23-11-51.png.png)
+
+
+git actions
+https://www.bilibili.com/video/av69442934/?spm_id_from=333.788.videocard.0&vd_source=631062e9ff21033189723c8ac931c360
+
+?? travis收费,使用git actions
+??静态站点部署失败
