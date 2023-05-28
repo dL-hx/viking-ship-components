@@ -13,7 +13,7 @@
 // const handleSelect = (item:string)=>{
 //     console.log(item);
 // }
-// <AutoComplete 
+// <AutoComplete
 //     fetchSuggestions = {handleChange}
 //     onSelect = {handleSelect}
 // />

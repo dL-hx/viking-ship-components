@@ -1,7 +1,7 @@
 import React from 'react'
 import Button, { ButtonSize, ButtonType } from '../components/Button/button'
 
-function ButtonDemo() {
+function ButtonDemo () {
   return (
     <>
       <Button>hello world</Button>

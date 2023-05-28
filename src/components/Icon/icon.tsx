@@ -7,10 +7,12 @@ library.add(fas)
 
 export type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark'
 export interface IconProps extends FontAwesomeIconProps {
+
   /** 主题 */
   className?: string;
   theme?: ThemeProps;
 }
+
 /**
  * 提供了一套常用的图标集合 基于 react-fontawesome。
  *

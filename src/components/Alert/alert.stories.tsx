@@ -21,7 +21,7 @@ export const alertWithChildren = () => (
     closable
     title="提示标题欧亲"
     children="this is a long description"
-    onClose={function noRefCheck(){}}
+    onClose={function noRefCheck () {}}
   />
 )
 

@@ -8,19 +8,19 @@ const ControlledInput = () => {
 }
 const defaultInput = () => (
   <>
-  <Input
-    style={{width: '300px'}}
-    placeholder="placeholder"
-    onChange={action('changed')}
-  />
-  <ControlledInput />
+    <Input
+      style={{width: '300px'}}
+      placeholder="placeholder"
+      onChange={action('changed')}
+    />
+    <ControlledInput />
   </>
 )
 const disabledInput = () => (
   <Input
     style={{width: '300px'}}
     placeholder="disabled input"
-    disabled 
+    disabled
   />
 )
 
@@ -29,7 +29,7 @@ const iconInput = () => (
     style={{width: '300px'}}
     placeholder="input with icon"
     icon="search"
-  />  
+  />
 )
 
 const sizeInput = () => (
@@ -59,7 +59,7 @@ const pandInput = () => (
       defaultValue="google"
       append=".com"
     />
-    
+
   </>
 )
 

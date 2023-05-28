@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonDemo from './demos/ButtonDemo';
 import MenuDemo from './demos/MenuDemo';
 
-function App() {
+function App () {
   return (
     <div className="App">
       <header className="App-header">
@@ -13,11 +13,11 @@ function App() {
         <code>
           const a = 'b'
         </code> */}
-        
+
         <MenuDemo />
 
         <ButtonDemo />
-       
+
       </header>
     </div>
   );
