@@ -56,8 +56,13 @@ module.exports = plop => {
           data: {// 传入模板的参数
             componentName,
             name
-          },
-        }
+          }
+        },
+        {
+          path: 'src/styles/index.scss',
+          template: `// ${name}\n@import '../components/${componentName}/style';`,
+          type: 'append',
+        },
       ]
       return actions
     }

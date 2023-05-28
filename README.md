@@ -422,3 +422,34 @@ form encType=application/x-www-form-urlencoded(default) 默认是这个低效
 2. javascript 发送异步请求,
 ![Snipaste_2023-05-25_01-14-13.png](README%2FSnipaste_2023-05-25_01-14-13.png)
 ![Snipaste_2023-05-27_16-59-19.png](README%2FSnipaste_2023-05-27_16-59-19.png)
+
+```tsx
+    const updateFileList = (uploadFile:UploadFile, updateObj:Partial<UploadFile>)=>{
+        setFileList(prevList=>{
+            return prevList.map(file=>{// 用之前的值,返回新的列表
+                if (file.uid===uploadFile.uid) {
+                    return {...file, ...updateObj}
+                }else{
+                    return file
+                }
+            })
+        })
+    }
+```
+
+```tsx
+    const handleRemove = (file:UploadFile)=>{
+        setFileList((prevList)=>{// 移除fileItem
+            return prevList.filter(item=> item.uid !== file.uid)
+        })
+
+        if (onRemove) { // 传递给外界用户调用的方法
+            onRemove(file)
+        }
+    }
+```
+![Snipaste_2023-05-27_17-32-15.png](README%2FSnipaste_2023-05-27_17-32-15.png)
+
+
+Progress 组件
+![Snipaste_2023-05-28_12-04-53.png](README%2FSnipaste_2023-05-28_12-04-53.png)
