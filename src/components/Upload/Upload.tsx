@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import classNames from "classnames";
-import Button from "../Button/button";
+import Dragger from './dragger'
 import UploadList from "./uploadList";
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
 export interface UploadFile {
@@ -37,8 +37,9 @@ export interface UploadProps {
     data?: { [key: string]: any };
     /** 是否携带请求参数 */
     withCredentials?: boolean;
-    accept?:string;
-    multiple?:boolean;
+    accept?: string;
+    multiple?: boolean;
+    drag?: boolean;
 
 }
 
@@ -59,8 +60,9 @@ export const Upload: React.FC<UploadProps> = (props) => {
         headers,
         withCredentials,
         accept,
-        multiple
-     } = props;
+        multiple,
+        drag
+    } = props;
 
     const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
 
@@ -115,13 +117,13 @@ export const Upload: React.FC<UploadProps> = (props) => {
         }
         // 更新fileList
         // setFileList([_file, ...fileList]);
-        setFileList(prevList=>{
+        setFileList(prevList => {
             return [_file, ...prevList]
         })
         const formData = new FormData();
-        formData.append(name||'file', file);
+        formData.append(name || 'file', file);
         if (data) {
-            Object.keys(data).forEach(key=>{
+            Object.keys(data).forEach(key => {
                 formData.append(key, data[key])
             })
         }
@@ -196,10 +198,16 @@ export const Upload: React.FC<UploadProps> = (props) => {
     }
     // console.log(fileList);
     return (
-        <div className={classes} style={style}>
-            <Button btnType="primary" onClick={handleClick}>
+        <div className={classes} style={style} onClick={handleClick}>
+            {drag ?
+                <Dragger onFile={(files) => { uploadFiles(files) }}>
+                    {children}
+                </Dragger> :
+                children
+            }
+            {/*            <Button btnType="primary" onClick={handleClick}>
                 Upload File
-            </Button>
+            </Button> */}
             <input
                 className={"viking-file-input"}
                 type="file"
@@ -218,7 +226,7 @@ export const Upload: React.FC<UploadProps> = (props) => {
 };
 
 Upload.defaultProps = {
-    name:'file'
+    name: 'file'
 };
 
 export default Upload;

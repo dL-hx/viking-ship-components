@@ -2,6 +2,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { Upload, UploadFile } from './upload'
+import Button from '../Button/button'
+import Icon from '../Icon'
 
 const defaultFileList: UploadFile[] = [
     {
@@ -41,7 +43,9 @@ const SimpleUpload = () => {
     // onProgress={action('progress')}
     // onSuccess={action('success')}
     // onError={action('error')}
-    />
+    >
+          <Button size="lg" btnType="primary"><Icon icon="upload" /> 点击上传 </Button>
+    </Upload>
 }
 
 
@@ -56,10 +60,33 @@ const ActionUpload = () => {
         headers={{'X-Powered-By': 'vikingship'}}
         accept='.jpg'
         multiple
-    />
+        beforeUpload={checkFileSize}
+    >
+         <Button size="lg" btnType="primary"><Icon icon="upload" /> 不能传大于50Kb！ </Button>
+    </Upload>
 }
 
+
+
+const DragUpload = () => {
+    return (
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        onChange={action('changed')}
+        onRemove={action('removed')}
+        name="fileName"
+        multiple
+        drag
+      >
+        <Icon icon="upload" size="5x" theme="secondary" />
+        <br/>
+        <p>Drag file over to upload</p>
+      </Upload>
+    )
+  }
+  
 
 storiesOf('Upload Component', module)
     .add('SimpleUpload', SimpleUpload)
     .add('ActionUpload', ActionUpload)
+    .add('DragUpload', DragUpload)
